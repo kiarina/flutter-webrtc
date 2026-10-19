@@ -7,7 +7,7 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
 endif()
 
 # Add the libwebrtc dependency
-include("${CMAKE_CURRENT_SOURCE_DIR}/../third_party/CMakeLists.txt")
+include("${CMAKE_CURRENT_SOURCE_DIR}/../third_party/spirits_sdk.cmake")
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
@@ -40,7 +40,7 @@ include_directories(
   "${CMAKE_CURRENT_SOURCE_DIR}"
   "${CMAKE_CURRENT_SOURCE_DIR}/../common/cpp/include"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/svpng"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libwebrtc/include"
+  "${SPIRITS_LIBWEBRTC_ROOT}/include"
 )
 
 apply_standard_settings(${PLUGIN_NAME})
@@ -53,12 +53,12 @@ target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
 target_include_directories(${PLUGIN_NAME} INTERFACE
   "${CMAKE_CURRENT_SOURCE_DIR}"
   "${CMAKE_CURRENT_SOURCE_DIR}/../common/cpp/include"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libwebrtc/include"
+  "${SPIRITS_LIBWEBRTC_ROOT}/include"
 )
 target_link_libraries(${PLUGIN_NAME} PRIVATE 
   flutter
   flutter_wrapper_plugin
-  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libwebrtc/lib/libwebrtc.dll.lib"
+  "${SPIRITS_LIBWEBRTC_ROOT}/lib/libwebrtc.dll.lib"
   avrt.lib
   ksuser.lib
   mmdevapi.lib
@@ -70,10 +70,10 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 
 # List of absolute paths to libraries that should be bundled with the plugin
 set(flutter_webrtc_bundled_libraries
-  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libwebrtc/lib/libwebrtc.dll"
+  "${SPIRITS_LIBWEBRTC_ROOT}/lib/libwebrtc.dll"
   PARENT_SCOPE
 )
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/external_audio_input_policy.cmake")
 flutter_webrtc_configure_external_input(${PLUGIN_NAME}
-  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libwebrtc/include")
+  "${SPIRITS_LIBWEBRTC_ROOT}/include")
