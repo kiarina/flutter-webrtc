@@ -18,7 +18,8 @@ FlutterWebRTC::FlutterWebRTC(FlutterWebRTCPlugin* plugin)
       FlutterDataChannel::FlutterDataChannel(this),
       FlutterFrameCryptor::FlutterFrameCryptor(this),
       FlutterDataPacketCryptor::FlutterDataPacketCryptor(this),
-      FlutterExternalMedia::FlutterExternalMedia(this) {}
+      FlutterExternalMedia::FlutterExternalMedia(this),
+      FlutterRemoteAudioTap::FlutterRemoteAudioTap(this) {}
 
 FlutterWebRTC::~FlutterWebRTC() {}
 
@@ -66,6 +67,11 @@ void FlutterWebRTC::HandleMethodCall(
 
   if (method_call.method_name().rfind("externalMedia", 0) == 0) {
     ExternalMediaMethod(method_call, std::move(result));
+    return;
+  }
+
+  if (method_call.method_name().rfind("remoteAudioTap", 0) == 0) {
+    RemoteAudioTapMethod(method_call, std::move(result));
     return;
   }
 

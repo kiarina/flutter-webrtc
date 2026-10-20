@@ -25,3 +25,5 @@ export 'src/native/rtc_video_platform_view_controller.dart';
 export 'src/native/rtc_video_platform_view.dart';
 export 'src/native/external_media.dart'
     if (dart.library.js_interop) 'src/web/external_media.dart';
+export 'src/native/remote_audio_tap.dart'
+    if (dart.library.js_interop) 'src/web/remote_audio_tap.dart';

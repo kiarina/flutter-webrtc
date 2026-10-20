@@ -45,6 +45,7 @@ class FlutterWebRTCBase {
   friend class FlutterScreenCapture;
   friend class FlutterFrameCryptor;
   friend class FlutterDataPacketCryptor;
+  friend class FlutterRemoteAudioTap;
   enum ParseConstraintType { kMandatory, kOptional };
 
  public:
