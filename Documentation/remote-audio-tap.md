@@ -39,5 +39,5 @@ not change the receive pipeline or jitter buffer. Delivery adds the platform
 thread hop; the caller should buffer before playing. Tracks are looked up among
 the receivers of the plugin's peer connections by track id.
 
-Validated in labs `2026/10/20/flutter-remote-audio-tap-playout` (macOS and
+Validated in labs `2026/10/21/flutter-remote-audio-tap-playout` (macOS and
 Windows: processing slot + application speaker + AEC on the played reference).
